@@ -9,7 +9,7 @@
 <body>
     <?php require_once 'create.php'; ?>
     <div class="container">
-        <a href="create.php">create</a>
+        <a href="create.php">Create</a>
 
     </div>
 
