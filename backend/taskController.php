@@ -2,7 +2,6 @@
 
 //Variabelen vullen
 $action = $_POST['action'];
-$id = $_POST['id'];
 $title = $_POST['title'];
 if (empty($title)) {
     $errors[] = "Vul de title in.";
@@ -12,14 +11,15 @@ if (empty($title)) {
     $errors[] = "Vul de beschrijving in.";
 }
 $afdeling= $_POST['afdeling'];
-if (empty($title)) {
-    $errors[] = "Vul de afdeling in.";
+$geldige_afdelingen = ['personeel', 'horeca', 'techniek', 'inkoop', 'klantenservice', 'groen', 'kantoor'];
+if (empty($afdeling) || !in_array($afdeling, $geldige_afdelingen)) {
+    $errors[] = "Selecteer een geldige afdeling.";
 }
-$status= $_POST['status'];
-$deadline =$_POST['deadline'];
-$user = $_POST['user'];
-$created_at	= $_POST['created_at'];
-
+$status = !empty($_POST['status']) ? $_POST['status'] : 'todo';
+$geldige_statussen = ['todo', 'doing', 'done'];
+if (!in_array($status, $geldige_statussen)) {
+    $status = 'todo';
+}
 //1. Verbinding
 
 require_once __DIR__ . '/conn.php';
@@ -34,8 +34,17 @@ function getIncompleteTasks() {
 }
 
 //2. Query
-$query = "INSERT INTO taken (id, title, beschrijving, afdeling, status, deadline, user, created_at)
-VALUES (:id, :title, :beschrijving, :afdeling, :status, :deadline, :user, :created_at)"
+$query = "INSERT INTO taken (title, beschrijving, afdeling, status)
+VALUES (:title, :beschrijving, :afdeling, :status)";
 
 //3. Prepare
+$statement = $conn->prepare($query);
+$statement->execute([
+    ":title" => $title,
+    ":beschrijving" => $beschrijving,
+    ":afdeling" => $afdeling,
+    ":status" => $status,
+]);
+
+header('Location: ../../../task/create.php?msg=Taak aangemaakt')
 ?>
