@@ -14,27 +14,29 @@
         <form action="TakenLijst" method="post">
             <div class="Taken">
                 <label for="titel">Titel: </label>
-                <input type="text" id="titel" placeholder="Titel">
+                <input type="text" id="titel" sname="titel" placeholder="Titel"required>
             </div>
 
             <div class="Taken">
                 <label for="afdeling">Afdeling: </label>
-                <input type="text" id="afdeling" placeholder="Afdeling">
+                <input type="text" id="afdeling" name="afdeling" placeholder="Afdeling" required>
             </div>
 
             <div class="Taken">
                 <label for="beschrijving">Beschrijving: </label>
-                <input type="textarea" id="beschrijving" placeholder="Beschrijving">
+                <input type="textarea" id="beschrijving" name="Beschrijving" placeholder="Beschrijving" required>
             </div>
 
-            <div>
+            <div class="Taken">
                 <label for="status">Status</label>
                 <select id="status" name="status" required>
                 <option value="">-- Kies status --</option>
                 <option value="todo">To Do</option>
                 <option value="in-progress">In Progress</option>
                 <option value="done">Done</option>
+                </select>
             </div>
+
              <button type="submit">Taak toevoegen</button>
         </form>
 
