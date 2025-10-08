@@ -1,16 +1,16 @@
 <?php
 
 //Variabelen vullen
-$action = $_POST['action'];
-$title = $_POST['title'];
-if (empty($title)) {
-    $errors[] = "Vul de title in.";
+$action = $_POST['action'] ??null;
+$titel = $_POST['titel'];
+if (empty($titel)) {
+    $errors[] = "Vul de titel in.";
 }
-$beschrijving= $_POST['beschrijving'];
-if (empty($title)) {
+$beschrijving= $_POST['beschrijving']??null ;
+if (empty($titel)) {
     $errors[] = "Vul de beschrijving in.";
 }
-$afdeling= $_POST['afdeling'];
+$afdeling= $_POST['afdeling']??null ;
 $geldige_afdelingen = ['personeel', 'horeca', 'techniek', 'inkoop', 'klantenservice', 'groen', 'kantoor'];
 if (empty($afdeling) || !in_array($afdeling, $geldige_afdelingen)) {
     $errors[] = "Selecteer een geldige afdeling.";
@@ -34,13 +34,14 @@ function getIncompleteTasks() {
 }
 
 //2. Query
-$query = "INSERT INTO taken (title, beschrijving, afdeling, status)
-VALUES (:title, :beschrijving, :afdeling, :status)";
+
+$query = "INSERT INTO taken (titel, beschrijving, afdeling, status)
+VALUES (:titel, :beschrijving, :afdeling, :status)";
 
 //3. Prepare
 $statement = $conn->prepare($query);
 $statement->execute([
-    ":title" => $title,
+    ":titel" => $titel,
     ":beschrijving" => $beschrijving,
     ":afdeling" => $afdeling,
     ":status" => $status,

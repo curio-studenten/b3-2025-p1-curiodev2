@@ -14,7 +14,7 @@
         <form action="../../../backend/tasksController.php" method="POST">
             <div class="Taken">
                 <label for="titel">Titel: </label>
-                <input type="text" id="titel" sname="titel" placeholder="Titel"required>
+                <input type="text" id="titel" name="titel" placeholder="Titel"required>
             </div>
 
             <div class="Taken">
