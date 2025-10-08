@@ -2,12 +2,12 @@
 
 //Variabelen vullen
 $action = $_POST['action'];
-$title = $_POST['title'];
-if (empty($title)) {
+$titel = $_POST['titel'];
+if (empty($titel)) {
     $errors[] = "Vul de title in.";
 }
-$beschrijving= $_POST['beschrijving'];
-if (empty($title)) {
+$beschrijving = $_POST['beschrijving'];
+if (empty($beschrijving)) {
     $errors[] = "Vul de beschrijving in.";
 }
 $afdeling= $_POST['afdeling'];
@@ -34,17 +34,17 @@ function getIncompleteTasks() {
 }
 
 //2. Query
-$query = "INSERT INTO taken (title, beschrijving, afdeling, status)
-VALUES (:title, :beschrijving, :afdeling, :status)";
+$query = "INSERT INTO taken (titel, beschrijving, afdeling, status)
+VALUES (:titel, :beschrijving, :afdeling, :status)";
 
 //3. Prepare
 $statement = $conn->prepare($query);
 $statement->execute([
-    ":title" => $title,
+    ":titel" => $titel,
     ":beschrijving" => $beschrijving,
     ":afdeling" => $afdeling,
     ":status" => $status,
 ]);
 
-header('Location: ../../../task/create.php?msg=Taak aangemaakt')
+header('Location: ../../../task/create.php?msg=Taak aangemaakt');
 ?>
