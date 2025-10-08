@@ -11,7 +11,7 @@
     <div class="container">
         <h1>Nieuwe Taak Formulier</h1>
 
-        <form action="TakenLijst" method="post">
+        <form action="../../../backend/tasksController.php" method="POST">
             <div class="Taken">
                 <label for="titel">Titel: </label>
                 <input type="text" id="titel" placeholder="Titel">
