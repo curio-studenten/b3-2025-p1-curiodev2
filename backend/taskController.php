@@ -21,7 +21,8 @@ $user = $_POST['user'];
 $created_at	= $_POST['created_at'];
 
 //1. Verbinding
-require_once '../../../backend/conn.php';
+
+require_once __DIR__ . '/conn.php';
 
 // Functie om alle taken op te halen waarvan de status NIET 'done' is
 function getIncompleteTasks() {
