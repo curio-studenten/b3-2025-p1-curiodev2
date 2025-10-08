@@ -7,37 +7,35 @@
 </head>
 
 <body>
-    
+
     <div class="container">
         <h1>Nieuwe Taak Formulier</h1>
 
-        <form action="../../../backend/tasksController.php" method="POST">
+        <!-- <form action="../../../backend/tasksController.php" method="POST">
             <div class="Taken">
                 <label for="titel">Titel: </label>
                 <input type="text" id="titel" name="titel" placeholder="Titel"required>
-            </div>
+            </div> -->
+        <form action="../backend/taskController.php" method="POST">
+            <input type="hidden" name="action" value="create">
 
-            <div class="Taken">
-                <label for="afdeling">Afdeling: </label>
-                <input type="text" id="afdeling" name="afdeling" placeholder="Afdeling" required>
-            </div>
+            <label for="titel">Titel:</label>
+            <input type="text" id="titel" name="titel" required>
 
-            <div class="Taken">
-                <label for="beschrijving">Beschrijving: </label>
-                <input type="textarea" id="beschrijving" name="Beschrijving" placeholder="Beschrijving" required>
-            </div>
+            <label for="beschrijving">Beschrijving:</label>
+            <textarea id="beschrijving" name="beschrijving" required></textarea>
 
-            <div class="Taken">
-                <label for="status">Status</label>
-                <select id="status" name="status" required>
-                <option value="">-- Kies status --</option>
+            <label for="afdeling">Afdeling:</label>
+            <input type="text" id="afdeling" name="afdeling" required>
+
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
                 <option value="todo">To Do</option>
-                <option value="in-progress">In Progress</option>
+                <option value="doing">Doing</option>
                 <option value="done">Done</option>
-                </select>
-            </div>
+            </select>
 
-             <button type="submit">Taak toevoegen</button>
+            <button type="submit">Taak toevoegen</button>
         </form>
 
     </div>

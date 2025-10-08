@@ -1,13 +1,13 @@
 <?php
 
 //Variabelen vullen
-$action = $_POST['action'] ??null;
+$action = $_POST['action'];
 $titel = $_POST['titel'];
 if (empty($titel)) {
-    $errors[] = "Vul de titel in.";
+    $errors[] = "Vul de title in.";
 }
-$beschrijving= $_POST['beschrijving']??null ;
-if (empty($titel)) {
+$beschrijving = $_POST['beschrijving'];
+if (empty($beschrijving)) {
     $errors[] = "Vul de beschrijving in.";
 }
 $afdeling= $_POST['afdeling']??null ;
@@ -34,7 +34,6 @@ function getIncompleteTasks() {
 }
 
 //2. Query
-
 $query = "INSERT INTO taken (titel, beschrijving, afdeling, status)
 VALUES (:titel, :beschrijving, :afdeling, :status)";
 
@@ -47,5 +46,5 @@ $statement->execute([
     ":status" => $status,
 ]);
 
-header('Location: ../../../task/create.php?msg=Taak aangemaakt')
+header('Location: ../../../task/create.php?msg=Taak aangemaakt');
 ?>
