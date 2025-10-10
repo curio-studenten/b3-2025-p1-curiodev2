@@ -2,46 +2,43 @@
 <html lang="nl">
 
 <head>
-    <title></title>
+    <meta charset="UTF-8">
+    <title>Taak aanmaken</title>
     <?php require_once 'head.php'; ?>
 </head>
 
 <body>
-
     <div class="container">
         <form action="../backend/taskController.php" method="POST">
             <input type="hidden" name="action" value="create">
 
             <div class="Taken">
-                <label for="title">Titel: </label>
-                <input type="text" id="title" name="title" placeholder="Titel:"required>
+                <label for="title">Titel:</label>
+                <input type="text" id="title" name="title" placeholder="Titel" required>
             </div>
 
             <div class="Taken">
-                <label for="afdeling">Afdeling: </label>
-                <input type="text" id="afdeling" name="afdeling" placeholder="Afdeling:" required>
+                <label for="afdeling">Afdeling:</label>
+                <input type="text" id="afdeling" name="afdeling" placeholder="Afdeling" required>
             </div>
 
             <div class="Taken">
-                <label for="beschrijving">Beschrijving: </label>
-                <textarea id="beschrijving" name="beschrijving" placeholder="Beschrijving:"required></textarea>
+                <label for="beschrijving">Beschrijving:</label>
+                <textarea id="beschrijving" name="beschrijving" placeholder="Beschrijving" required></textarea>
             </div>
 
             <div class="Taken">
-                <label for="status">Status</label>
+                <label for="status">Status:</label>
                 <select id="status" name="status" required>
-                <option value="">-- Kies status --</option>
-                <option value="todo">To Do</option>
-                <option value="in-progress">In Progress</option>
-                <option value="done">Done</option>
+                    <option value="">-- Kies status --</option>
+                    <option value="todo">To Do</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="done">Done</option>
                 </select>
             </div>
 
-             <button type="submit">Taak toevoegen</button>
+            <button type="submit">Taak toevoegen</button>
         </form>
-
     </div>
-
 </body>
-
 </html>
