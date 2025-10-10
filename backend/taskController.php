@@ -40,7 +40,7 @@ VALUES (:title, :beschrijving, :afdeling, :status)";
 //3. Prepare
 $statement = $conn->prepare($query);
 $statement->execute([
-    ":title" => $title,
+    ":titel" => $titel,
     ":beschrijving" => $beschrijving,
     ":afdeling" => $afdeling,
     ":status" => $status,
