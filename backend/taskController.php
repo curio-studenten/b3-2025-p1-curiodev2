@@ -10,7 +10,7 @@ $beschrijving = $_POST['beschrijving'];
 if (empty($beschrijving)) {
     $errors[] = "Vul de beschrijving in.";
 }
-$afdeling= $_POST['afdeling'];
+$afdeling= $_POST['afdeling']??null ;
 $geldige_afdelingen = ['personeel', 'horeca', 'techniek', 'inkoop', 'klantenservice', 'groen', 'kantoor'];
 if (empty($afdeling) || !in_array($afdeling, $geldige_afdelingen)) {
     $errors[] = "Selecteer een geldige afdeling.";

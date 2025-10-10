@@ -11,6 +11,11 @@
     <div class="container">
         <h1>Nieuwe Taak Formulier</h1>
 
+        <!-- <form action="../../../backend/tasksController.php" method="POST">
+            <div class="Taken">
+                <label for="titel">Titel: </label>
+                <input type="text" id="titel" name="titel" placeholder="Titel"required>
+            </div> -->
         <form action="../backend/taskController.php" method="POST">
             <input type="hidden" name="action" value="create">
             <div class="Taken">
