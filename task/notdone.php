@@ -1,4 +1,6 @@
-    <?php $incompleteTasks = getIncompleteTasks();
+<?php require_once __DIR__ . '/../backend/taskController.php';
+    $incompleteTasks = getIncompleteTasks();
+    print_r($incompleteTasks);
     ?>
 
     <div class="container">
@@ -16,15 +18,21 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($incompleteTasks as $task): ?>
-                    <tr>
-                        <td><?= $task['id'] ?></td>
+                <?php if (!empty($incompleteTasks)): ?>
+                    <?php foreach ($incompleteTasks as $task): ?>
+                        <tr>
+                            <td><?= $task['id'] ?></td>
                         <td><?= $task['titel'] ?></td>
                         <td><?= $task['beschrijving'] ?></td>
                         <td><?= $task['afdeling'] ?></td>
                         <td><?= $task['status'] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5">No tasks found.</td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
