@@ -48,7 +48,7 @@ $statement->execute([
     ":status" => $status
 ]);
 
-header('Location: ../task/create.php?msg=Taakaangemaakt');
+header('Location: ../task/index.php?msg=TaakAangemaakt');
 exit();
 // header('Location: ../../../task/create.php?msg=Taak aangemaakt')
 ?>

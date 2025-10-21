@@ -14,9 +14,14 @@
     //$tasks = getIncompleteTasks();
     ?>
 
-    <?php require_once 'create.php'; ?>
     <div class="container">
-        <?php require_once 'create.php'; ?>
+        <h1>Nieuwe Taak</h1>
+        <a href="create.php">Nieuwe Taak &gt;</a>
+
+        <?php if (isset($_GET['msg'])) {
+            echo "<div class='msg'>" . $_GET['msg'] . "</div>";
+        } ?>
+
 
     </div>
 
