@@ -34,17 +34,20 @@ function getIncompleteTasks() {
 }
 
 //2. Query
-$query = "INSERT INTO taken (title, beschrijving, afdeling, status)
-VALUES (:title, :beschrijving, :afdeling, :status)";
+$query = "INSERT INTO taken (titel, beschrijving, afdeling, status)
+VALUES (:titel, :beschrijving, :afdeling, :status)";
 
 //3. Prepare
 $statement = $conn->prepare($query);
-$statement->execute([
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $statement->execute([
     ":titel" => $titel,
     ":beschrijving" => $beschrijving,
     ":afdeling" => $afdeling,
     ":status" => $status,
 ]);
+}
+
 
 // header('Location: ../../../task/create.php?msg=Taak aangemaakt')
 ?>

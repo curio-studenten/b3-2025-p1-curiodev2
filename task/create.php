@@ -13,8 +13,8 @@
             <input type="hidden" name="action" value="create">
 
             <div class="Taken">
-                <label for="title">Titel:</label>
-                <input type="text" id="title" name="title" placeholder="Titel" required>
+                <label for="titel">Titel:</label>
+                <input type="text" id="titel" name="titel" placeholder="Titel" required>
             </div>
 
             <div class="Taken">
