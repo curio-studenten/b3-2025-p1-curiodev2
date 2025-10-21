@@ -289,9 +289,22 @@ label{
 }
 
 .container {
-    background-color: #ffffff;
+    background-color: lightgray;
     padding: 2rem 2.5rem;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 400px;
+}
+
+.container a {
+  text-decoration: none;
+  color: black;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.container a:hover{
+  color: blue;
+  font-size: 16px;
 }
