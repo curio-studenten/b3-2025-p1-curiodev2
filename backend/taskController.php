@@ -1,13 +1,13 @@
 <?php
-
 //Variabelen vullen
+$errors = [];
 $action = $_POST['action'] ?? 'create';
 $titel = $_POST['titel'] ?? null;
-if (empty($title)) {
-    $errors[] = "Vul de title in.";
+if (empty($titel)) {
+    $errors[] = "Vul de titel in.";
 }
 $beschrijving = $_POST['beschrijving'] ?? null;
-if (empty($title)) {
+if (empty($beschrijving)) {
     $errors[] = "Vul de beschrijving in.";
 }
 $afdeling = $_POST['afdeling'] ?? null;
@@ -25,7 +25,8 @@ if (!in_array($status, $geldige_statussen)) {
 require_once __DIR__ . '/conn.php';
 
 // Functie om alle taken op te halen waarvan de status NIET 'done' is
-function getIncompleteTasks() {
+function getIncompleteTasks()
+{
     global $conn;
     $sql = "SELECT * FROM taken WHERE status <> :done";
     $stmt = $conn->prepare($sql);
@@ -34,8 +35,9 @@ function getIncompleteTasks() {
 }
 
 //2. Query
-$query = "INSERT INTO taken (title, beschrijving, afdeling, status)
-VALUES (:title, :beschrijving, :afdeling, :status)";
+$query = "INSERT INTO taken (titel, beschrijving, afdeling, status)
+VALUES (:titel, :beschrijving, :afdeling, :status)";
+
 
 //3. Prepare
 $statement = $conn->prepare($query);
@@ -43,8 +45,10 @@ $statement->execute([
     ":titel" => $titel,
     ":beschrijving" => $beschrijving,
     ":afdeling" => $afdeling,
-    ":status" => $status,
+    ":status" => $status
 ]);
 
+header('Location: ../task/create.php?msg=Taak aangemaakt');
+exit();
 // header('Location: ../../../task/create.php?msg=Taak aangemaakt')
 ?>
