@@ -7,11 +7,9 @@
 </head>
 
 <body>
-    <?php
-    // require_once __DIR__ . '/../backend/taskController.php';
-
-    // Gebruik de functie uit de controller om taken op te halen
-    //$tasks = getIncompleteTasks();
+    <?php require_once __DIR__ . '/../backend/taskController.php';
+    
+    require_once 'notdone.php';
     ?>
 
     <div class="container">
