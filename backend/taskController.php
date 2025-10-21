@@ -41,12 +41,15 @@ VALUES (:titel, :beschrijving, :afdeling, :status)";
 
 //3. Prepare
 $statement = $conn->prepare($query);
-$statement->execute([
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $statement->execute([
     ":titel" => $titel,
     ":beschrijving" => $beschrijving,
     ":afdeling" => $afdeling,
     ":status" => $status
 ]);
+}
+
 
 header('Location: ../task/index.php?msg=TaakAangemaakt');
 exit();
