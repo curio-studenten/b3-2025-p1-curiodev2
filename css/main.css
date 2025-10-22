@@ -288,23 +288,115 @@ label{
   }
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f57c;
+    padding: 20px;
+    margin: 0;
+}
+
 .container {
-    background-color: lightgray;
-    padding: 2rem 2.5rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
-.container a {
-  text-decoration: none;
-  color: black;
-  margin: 10px;
-  padding: 10px;
-  cursor: pointer;
+.header {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.container a:hover{
-  color: blue;
-  font-size: 16px;
+.btn-new-task {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.msg {
+    background-color: #d4edda;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.kanban-board {
+    display: flex;
+    gap: 20px;
+}
+
+.kanban-column {
+    flex: 1;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.column-header {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: white;
+}
+
+.todo-header {
+    background-color: #6c757d;
+}
+
+.doing-header {
+    background-color: #ffc107;
+}
+
+.done-header {
+    background-color: #28a745;
+}
+
+.notdone-header {
+    background-color: #dc3545;
+}
+
+.task-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.task-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.task-card p {
+    margin: 0 0 10px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.afdeling {
+    display: inline-block;
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.task-card a {
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.task-card a:hover {
+    text-decoration: underline;
 }

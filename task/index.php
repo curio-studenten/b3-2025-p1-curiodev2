@@ -8,19 +8,90 @@
 
 <body>
     <?php require_once __DIR__ . '/../backend/taskController.php';
-    
+
     require_once 'notdone.php';
     ?>
 
     <div class="container">
-        <h1>Nieuwe Taak</h1>
-        <a href="create.php">Nieuwe Taak &gt;</a>
+        <div class="header">
+            <h1>Nieuwe Taak</h1>
+            <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
+        </div>
 
-        <?php if (isset($_GET['msg'])) {
-            echo "<div class='msg'>" . $_GET['msg'] . "</div>";
-        } ?>
+        <?php if (isset($_GET['msg'])): ?>
+            <div class='msg'><?php echo htmlspecialchars($_GET['msg']); ?></div>
+        <?php endif; ?>
 
+        <div class="kanban-board">
+            <!-- TO DO Column -->
+            <div class="kanban-column">
+                <h2 class="column-header todo-header">To Do</h2>
+                <div class="tasks-container">
+                    <?php
+                    if (isset($taken) && count($taken) > 0) {
+                        foreach ($taken as $taak) {
+                            if ($taak['status'] == 'todo') {
+                                ?>
+                                <div class="task-card">
+                                    <h3><?php echo $taak['titel']; ?></h3>
+                                    <p><?php echo $taak['beschrijving']; ?></p>
+                                    <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                    <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
+                                </div>
+                                <?php
+                            }
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
 
+            <!-- DOING Column -->
+            <div class="kanban-column">
+                <h2 class="column-header doing-header">Doing</h2>
+                <div class="tasks-container">
+                    <?php
+                    if (isset($taken) && count($taken) > 0) {
+                        foreach ($taken as $taak) {
+                            if ($taak['status'] == 'in-progress') {
+                                ?>
+                                <div class="task-card">
+                                    <h3><?php echo $taak['titel']; ?></h3>
+                                    <p><?php echo $taak['beschrijving']; ?></p>
+                                    <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                    <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
+                                </div>
+                                <?php
+                            }
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <!-- DONE Column -->
+            <div class="kanban-column">
+                <h2 class="column-header done-header">Done</h2>
+                <div class="tasks-container">
+                    <?php
+                    if (isset($taken) && count($taken) > 0) {
+                        foreach ($taken as $taak) {
+                            if ($taak['status'] == 'done') {
+                                ?>
+                                <div class="task-card">
+                                    <h3><?php echo $taak['titel']; ?></h3>
+                                    <p><?php echo $taak['beschrijving']; ?></p>
+                                    <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                    <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
+                                </div>
+                                <?php
+                            }
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
