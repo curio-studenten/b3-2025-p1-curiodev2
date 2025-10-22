@@ -7,18 +7,7 @@
 </head>
 
 <body>
-    <?php require_once __DIR__ . '/../backend/taskController.php';
-
-<!-- <body>
-    <section class="board" aria-label="Tasks board">
-      <section class="column" aria-labelledby="todo-heading">
-        <h2 id="todo-heading">To Do <span class="count"></span></h2>
-        <ul class="task-list" aria-describedby="todo-heading">
-          <li class="task"></li>
-          <li class="task"></li>
-          <li class="task"></li>
-        </ul>
-      </section> -->
+    <?php require_once __DIR__ . '/../backend/taskController.php';?>
 
 
     <?php
