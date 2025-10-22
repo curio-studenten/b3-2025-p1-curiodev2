@@ -7,17 +7,15 @@
 </head>
 
 <body>
-    <?php require_once __DIR__ . '/../backend/taskController.php';?>
-
 
     <?php
-    require_once __DIR__ . '/../backend/taskController.php';
-    require_once 'notdone.php';
+    // require_once __DIR__ . '/../backend/taskController.php';
+    // require_once 'notdone.php';
     ?>
 
     <div class="container">
         <div class="header">
-            <h1>Nieuwe Taak</h1>
+            <h1>Taak Verdeling</h1>
             <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
         </div>
 

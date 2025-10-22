@@ -38,10 +38,11 @@
                     </select>
                 </div>
 
+
                 <button type="submit">Taak toevoegen</button>
-                <p><a href="index.php">Terug naar Takenlijst</a></p>
             </form>
         </div>
     </div>
 </body>
+
 </html>
