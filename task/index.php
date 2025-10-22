@@ -7,8 +7,9 @@
 </head>
 
 <body>
-    <?php require_once __DIR__ . '/../backend/taskController.php';
 
+    <?php
+    require_once __DIR__ . '/../backend/taskController.php';
     require_once 'notdone.php';
     ?>
 
@@ -90,7 +91,6 @@
                     }
                     ?>
                 </div>
-
             </div>
         </div>
     </div>
