@@ -1,8 +1,8 @@
 <?php
-
+// 1. Verbinding
 require_once __DIR__ . '/conn.php';
 
-
+// Functie om alle taken op te halen
 function getAllTasks()
 {
     global $conn;
@@ -12,6 +12,17 @@ function getAllTasks()
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// Functie om alle taken op te halen waarvan de status NIET 'done' is
+function getIncompleteTasks()
+{
+    global $conn;
+    $sql = "SELECT * FROM taken WHERE status <> :done ORDER BY id DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([':done' => 'done']);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Functie om taken te groeperen op status
 function getTasksByStatus()
 {
     global $conn;
@@ -35,9 +46,10 @@ function getTasksByStatus()
     return $groupedTasks;
 }
 
+// Haal alle taken op voor de index pagina
 $taken = getAllTasks();
 
-
+// Alleen verwerken als het een POST request is (vanuit een formulier)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Variabelen vullen en valideren
@@ -66,41 +78,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status = 'todo';
     }
     
-
+    // Alleen opslaan als er geen errors zijn
     if (empty($errors)) {
-        if ($action === 'create') {
-            $query = "INSERT INTO taken (titel, beschrijving, afdeling, status)
+        // Query
+        $query = "INSERT INTO taken (titel, beschrijving, afdeling, status)
                   VALUES (:titel, :beschrijving, :afdeling, :status)";
-            $params = [
-                ":titel" => $titel,
-                ":beschrijving" => $beschrijving,
-                ":afdeling" => $afdeling,
-                ":status" => $status
-            ];
-        } elseif ($action === 'update') {
-            $id = $_POST['id'] ?? null;
-            if (empty($id)) {
-                $errors[] = "Geen geldig ID opgegeven.";
-            } else {
-                $query = "UPDATE taken SET titel = :titel, beschrijving = :beschrijving, afdeling = :afdeling, status = :status WHERE id = :id";
-                $params = [
-                    ":titel" => $titel,
-                    ":beschrijving" => $beschrijving,
-                    ":afdeling" => $afdeling,
-                    ":status" => $status,
-                    ":id" => $id
-                ];
-            }
-        }
-
-        if (empty($errors)) {
-            $statement = $conn->prepare($query);
-            $statement->execute($params);
-            header('Location: ../task/index.php?msg=Taak succesvol verwerkt');
-            exit();
-        }
+        
+        // Prepare en Execute
+        $statement = $conn->prepare($query);
+        $statement->execute([
+            ":titel" => $titel,
+            ":beschrijving" => $beschrijving,
+            ":afdeling" => $afdeling,
+            ":status" => $status
+        ]);
+        
+        // Redirect alleen na succesvolle POST
+        header('Location: ../task/index.php?msg=Taak succesvol aangemaakt');
+        exit();
     } else {
-
+        // Bij errors, terug naar create.php met foutmeldingen
         $error_msg = implode(', ', $errors);
         header('Location: ../task/create.php?error=' . urlencode($error_msg));
         exit();
