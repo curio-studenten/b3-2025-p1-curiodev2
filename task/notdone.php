@@ -1,10 +1,10 @@
 <?php require_once __DIR__ . '/../backend/taskController.php';
     $incompleteTasks = getIncompleteTasks();
-    print_r($incompleteTasks);
     ?>
 
     <div class="container">
         <h1>Tasks</h1>
+
 
         <h2>Not Completed Tasks</h2>
         <table>
