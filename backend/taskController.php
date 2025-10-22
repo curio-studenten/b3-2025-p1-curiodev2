@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Bij errors, terug naar create.php met foutmeldingen
         $error_msg = implode(', ', $errors);
-        header('Location: ../task/create.php?error=' . urlencode($error_msg));
+        header('Location: ../task/index.php?error=' . urlencode($error_msg));
         exit();
     }
 }
