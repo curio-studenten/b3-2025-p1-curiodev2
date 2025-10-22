@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/conn.php';
 
-
 function getAllTasks()
 {
     global $conn;

@@ -19,7 +19,16 @@
 
             <div class="Taken">
                 <label for="afdeling">Afdeling:</label>
-                <input type="text" id="afdeling" name="afdeling" placeholder="Afdeling" required>
+                <select id="afdeling" name="afdeling" required>
+                    <option value="">-- Kies afdeling --</option>
+                    <option value="personeel">Personeel</option>
+                    <option value="horeca">Horeca</option>
+                    <option value="techniek">Techniek</option>
+                    <option value="inkoop">Inkoop</option>
+                    <option value="klantenservice">Klantenservice</option>
+                    <option value="groen">Groen</option>
+                    <option value="kantoor">Kantoor</option>
+                </select>
             </div>
 
             <div class="Taken">
