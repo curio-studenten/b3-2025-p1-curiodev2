@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Taak aanmaken</title>
+    <title>Taak aanpassen</title>
     <?php require_once 'head.php'; ?>
 </head>
 
@@ -38,7 +38,6 @@
             </div>
 
             <button type="submit">Taak toevoegen</button>
-             <p><a href="index.php">Terug naar Takenlijst</a></p>
         </form>
     </div>
 </body>
