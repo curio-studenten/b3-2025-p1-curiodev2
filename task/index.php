@@ -9,11 +9,34 @@
 <body>
 
     <?php
-    // require_once __DIR__ . '/../backend/taskController.php';
+    require_once __DIR__ . '/../backend/taskController.php';
     // require_once 'notdone.php';
     ?>
 
-    <div class="container">
+    <div class="main-flex">
+        <nav class="sidebar">
+            <h2>Taak Overzicht</h2>
+            <ul class="sidebar-list">
+                <?php
+                    $tasksByStatus = getTasksByStatus();
+                    $hasTasks = false;
+                    foreach (['todo', 'in-progress', 'done'] as $status) {
+                        foreach ($tasksByStatus[$status] as $taak) {
+                            $hasTasks = true;
+                            $statusClass = $status . '-header';
+                            echo '<li class="sidebar-task">'
+                                . '<span class="sidebar-title">' . $taak['titel'] . '</span> '
+                                . '<span class="' . $statusClass . ' sidebar-status">' . $taak['status'] . '</span>'
+                                . '</li>';
+                        }
+                    }
+                    if (!$hasTasks) {
+                        echo '<li>Geen taken gevonden.</li>';
+                    }
+                ?>
+            </ul>
+        </nav>
+            <div class="main-content">
         <div class="header">
             <h1>Taak Verdeling</h1>
             <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
@@ -92,6 +115,7 @@
                     ?>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 

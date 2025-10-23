@@ -42,7 +42,15 @@ if (!$task) {
 
             <div class="Taken">
                 <label for="afdeling">Afdeling:</label>
-                <input type="text" id="afdeling" name="afdeling" value="<?= $task['afdeling'] ?>" placeholder="Afdeling" required>
+                <select id="afdeling" name="afdeling" required>
+                    <option value="personeel" <?= $task['afdeling'] === 'personeel' ? 'selected' : '' ?>>Personeel</option>
+                    <option value="horeca" <?= $task['afdeling'] === 'horeca' ? 'selected' : '' ?>>Horeca</option>
+                    <option value="techniek" <?= $task['afdeling'] === 'techniek' ? 'selected' : '' ?>>Techniek</option>
+                    <option value="inkoop" <?= $task['afdeling'] === 'inkoop' ? 'selected' : '' ?>>Inkoop</option>
+                    <option value="klantenservice" <?= $task['afdeling'] === 'klantenservice' ? 'selected' : '' ?>>Klantenservice</option>
+                    <option value="groen" <?= $task['afdeling'] === 'groen' ? 'selected' : '' ?>>Groen</option>
+                    <option value="kantoor" <?= $task['afdeling'] === 'kantoor' ? 'selected' : '' ?>>Kantoor</option>
+                </select>
             </div>
 
             <div class="Taken">

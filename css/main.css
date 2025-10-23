@@ -1,3 +1,9 @@
+/* Main content area next to sidebar */
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
 /*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
 
 /* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
@@ -355,6 +361,7 @@ body {
 
 .done-header {
     background-color: #28a745;
+
 }
 
 .notdone-header {
@@ -421,4 +428,33 @@ body {
 .container a:hover{
   color: blue;
   font-size: 16px;
+}
+
+/* Sidebar */
+.main-flex {
+  display: flex;
+}
+.sidebar {
+  width: 220px;
+  background: #f4f4f4;
+  padding: 20px 10px;
+  min-height: 100vh;
+}
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+}
+.sidebar-task {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sidebar-title {
+  font-weight: bold;
+}
+.sidebar-status {
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 0.9em;
 }
