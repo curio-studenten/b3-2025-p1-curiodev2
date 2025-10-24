@@ -310,6 +310,10 @@ body {
     margin: 0 auto;
 }
 
+img{
+  width: 250px;
+}
+
 .header {
     background: white;
     padding: 20px;

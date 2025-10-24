@@ -44,6 +44,7 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
         </nav>
         <div class="main-content">
             <div class="header">
+                <img src="../img/logo-big-v4.png" alt="logo">
                 <h1>Taak Verdeling</h1>
                 <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
             </div>
