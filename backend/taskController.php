@@ -38,33 +38,49 @@ $taken = getAllTasks();
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // Variabelen vullen en valideren
-    $errors = [];
+    
     $action = $_POST['action'] ?? 'create';
-
+    
+    if ($action === 'delete') {
+        $id = $_POST['id'] ?? null;
+        
+        if (!empty($id)) {
+            $query = "DELETE FROM taken WHERE id = :id";
+            $statement = $conn->prepare($query);
+            $statement->execute([':id' => $id]);
+            
+            header('Location: ../task/index.php?msg=Taak succesvol verwijderd');
+            exit;
+        } else {
+            header('Location: ../task/index.php?error=Geen geldig ID opgegeven');
+            exit;
+        }
+    }
+    
+    $errors = [];
+    
     $titel = $_POST['titel'] ?? null;
     if (empty($titel)) {
         $errors[] = "Vul de titel in.";
     }
-
+    
     $beschrijving = $_POST['beschrijving'] ?? null;
     if (empty($beschrijving)) {
         $errors[] = "Vul de beschrijving in.";
     }
-
+    
     $afdeling = $_POST['afdeling'] ?? null;
     $geldige_afdelingen = ['personeel', 'horeca', 'techniek', 'inkoop', 'klantenservice', 'groen', 'kantoor'];
     if (empty($afdeling) || !in_array($afdeling, $geldige_afdelingen)) {
         $errors[] = "Selecteer een geldige afdeling.";
     }
-
+    
     $status = !empty($_POST['status']) ? $_POST['status'] : 'todo';
     $geldige_statussen = ['todo', 'in-progress', 'done'];
     if (!in_array($status, $geldige_statussen)) {
         $status = 'todo';
     }
-
+    
 
     if (empty($errors)) {
         if ($action === 'create') {
@@ -89,17 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ":status" => $status,
                     ":id" => $id
                 ];
-            }
-        } elseif ($action == "delete") {
-            $id = $_POST['id'] ?? null;
-
-            if (!empty($id)) {
-                $query = "DELETE FROM taken WHERE id = :id";
-                $statement = $conn->prepare($query);
-                $statement->execute([':id' => $id]);
-
-                header('Location: ../task/index.php?msg=Taak succesvol verwijderd');
-                exit;
             }
         }
 
