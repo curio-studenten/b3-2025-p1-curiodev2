@@ -105,4 +105,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 }
+function deleteTask($id) {
+    global $conn;
+    $stmt = $conn->prepare("DELETE FROM taken WHERE id = ?");
+    $stmt->execute([(int)$id]); // cast naar int voor veiligheid
+}
 ?>
