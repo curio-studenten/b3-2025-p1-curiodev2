@@ -18,24 +18,25 @@
             <h2>Taak Overzicht</h2>
             <ul class="sidebar-list">
                 <?php
-                    $tasksByStatus = getTasksByStatus();
-                    $hasTasks = false;
-                    foreach (['todo', 'in-progress', 'done'] as $status) {
-                        foreach ($tasksByStatus[$status] as $taak) {
-                            $hasTasks = true;
-                            $statusClass = $status . '-header';
-                            echo '<li class="sidebar-task">'
-                                . '<span class="sidebar-title">' . $taak['titel'] . '</span> '
-                                . '<span class="' . $statusClass . ' sidebar-status">' . $taak['status'] . '</span>'
-                                . '</li>';
-                        }
+                $tasksByStatus = getTasksByStatus();
+                $hasTasks = false;
+                foreach (['todo', 'in-progress', 'done'] as $status) {
+                    foreach ($tasksByStatus[$status] as $taak) {
+                        $hasTasks = true;
+                        $statusClass = $status . '-header';
+                        echo '<li class="sidebar-task">'
+                            . '<span class="sidebar-title">' . $taak['titel'] . '</span> '
+                            . '<span class="' . $statusClass . ' sidebar-status">' . $taak['status'] . '</span>'
+                            . '</li>';
                     }
-                    if (!$hasTasks) {
-                        echo '<li>Geen taken gevonden.</li>';
-                    }
+                }
+                if (!$hasTasks) {
+                    echo '<li>Geen taken gevonden.</li>';
+                }
                 ?>
             </ul>
         </nav>
+
             <div class="main-content">
         <div class="header">
             <h1>Taak Verdeling</h1>
@@ -90,12 +91,11 @@
                                 </div>
                                 
                                 <?php
+
                             }
                         }
                     }
-                    ?>
-                </div>
-            </div>
+                        ?>
 
             <!-- DONE Column -->
             <div class="kanban-column">
@@ -113,17 +113,19 @@
                                     <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
                                     <button class="delete-btn" data-id="<?php echo $taak['id']; ?>">🗑️ Verwijderen</button>
                                 </div>
-                                
                                 <?php
+
                             }
                         }
                     }
-                    ?>
+                        ?>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-    </div>
 
 </body>
 
