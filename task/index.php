@@ -10,7 +10,6 @@
 
     <?php
     require_once __DIR__ . '/../backend/taskController.php';
-    require_once 'delete.php';
     ?>
 
     <div class="main-flex">
@@ -64,7 +63,7 @@
                                         <p><?php echo $taak['beschrijving']; ?></p>
                                         <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
                                         <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
-                                        <button class="delete-btn" data-id="<?php echo $taak['id']; ?>">🗑️ Verwijderen</button>
+                                        
                                     </div>
 
                                     <?php
@@ -89,7 +88,7 @@
                                         <p><?php echo $taak['beschrijving']; ?></p>
                                         <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
                                         <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
-                                        <button class="delete-btn" data-id="<?php echo $taak['id']; ?>">🗑️ Verwijderen</button>
+                                        
                                     </div>
 
                                     <?php
@@ -115,8 +114,6 @@
                                         <p><?php echo $taak['beschrijving']; ?></p>
                                         <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
                                         <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
-                                        <button class="delete-btn" data-id="<?php echo $taak['id']; ?>">🗑️
-                                            Verwijderen</button>
                                     </div>
                                     <?php
 
