@@ -1,3 +1,14 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+    $id = $_POST['id'];
+    require_once __DIR__ . '/../backend/conn.php';
+    $query = "DELETE FROM taken WHERE id = :id";
+    $statement = $conn->prepare($query);
+    $statement->execute([':id' => $id]);
+    http_response_code(200);
+    exit();
+}
+?>
 <script>
 // Wacht tot de hele HTML-pagina is geladen voor de programma werkt
 document.addEventListener('DOMContentLoaded', () => {

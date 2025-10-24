@@ -1,3 +1,7 @@
+.sidebar-status.in-progress-header {
+  background-color: #ffc107;
+  color: #222;
+}
 /* Main content area next to sidebar */
 .main-content {
   flex: 1;
@@ -315,9 +319,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-img{
-  width:250px;
-}
+
 .btn-new-task {
     background-color: #007bff;
     color: white;
