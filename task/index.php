@@ -1,3 +1,10 @@
+<?php
+
+if (isset($_GET['msg']) || isset($_GET['error'])) {
+    header("Refresh: 3; url=" . strtok($_SERVER["REQUEST_URI"], '?'));
+}
+?>
+
 <!doctype html>
 <html lang="nl">
 
@@ -35,11 +42,11 @@
                 ?>
             </ul>
         </nav>
-            <div class="main-content">
-        <div class="header">
-            <h1>Taak Verdeling</h1>
-            <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
-        </div>
+        <div class="main-content">
+            <div class="header">
+                <h1>Taak Verdeling</h1>
+                <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
+            </div>
 
             <?php if (isset($_GET['msg'])): ?>
                 <div class='msg'><?php echo htmlspecialchars($_GET['msg']); ?></div>
@@ -61,7 +68,7 @@
                                         <p><?php echo $taak['beschrijving']; ?></p>
                                         <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
                                         <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
-                                        
+
                                     </div>
 
                                     <?php
@@ -86,7 +93,7 @@
                                         <p><?php echo $taak['beschrijving']; ?></p>
                                         <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
                                         <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
-                                        
+
                                     </div>
 
                                     <?php
@@ -123,10 +130,10 @@
 
 
 
-           
+
+                </div>
+            </div>
         </div>
-        </div>
-    </div>
 
 </body>
 
