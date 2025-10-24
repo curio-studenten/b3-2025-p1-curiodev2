@@ -419,6 +419,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 500px;
     margin: 0 auto;
+    
 }
 
 .form a {
@@ -429,10 +430,23 @@ body {
   cursor: pointer;
 }
 
-.container a:hover{
-  color: blue;
-  font-size: 16px;
+button, input[type="submit"] {
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color:#991623;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: #000;
 }
+
+button, input[type="submit"]:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+
 
 /* Sidebar */
 .main-flex {
