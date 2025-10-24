@@ -10,7 +10,7 @@
 
     <?php
     require_once __DIR__ . '/../backend/taskController.php';
-     require_once 'delete.php';
+    require_once 'delete.php';
     ?>
 
     <div class="main-flex">
@@ -98,32 +98,32 @@
                             }
                         }
                         ?>
+                    </div>
+                </div>
 
-                        <!-- DONE Column -->
-                        <div class="kanban-column">
-                            <h2 class="column-header done-header">Done</h2>
-                            <div class="tasks-container">
-                                <?php
-                                if (isset($taken) && count($taken) > 0) {
-                                    foreach ($taken as $taak) {
-                                        if ($taak['status'] == 'done') {
-                                            ?>
-                                            <div class="task-card">
-                                                <h3><?php echo $taak['titel']; ?></h3>
-                                                <p><?php echo $taak['beschrijving']; ?></p>
-                                                <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
-                                                <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
-                                                <button class="delete-btn" data-id="<?php echo $taak['id']; ?>">🗑️
-                                                    Verwijderen</button>
-                                            </div>
-                                            <?php
+                <!-- DONE Column -->
+                <div class="kanban-column">
+                    <h2 class="column-header done-header">Done</h2>
+                    <div class="tasks-container">
+                        <?php
+                        if (isset($taken) && count($taken) > 0) {
+                            foreach ($taken as $taak) {
+                                if ($taak['status'] == 'done') {
+                                    ?>
+                                    <div class="task-card">
+                                        <h3><?php echo $taak['titel']; ?></h3>
+                                        <p><?php echo $taak['beschrijving']; ?></p>
+                                        <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                        <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
+                                        <button class="delete-btn" data-id="<?php echo $taak['id']; ?>">🗑️
+                                            Verwijderen</button>
+                                    </div>
+                                    <?php
 
-                                        }
-                                    }
                                 }
-                                ?>
-                            </div>
-                        </div>
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
