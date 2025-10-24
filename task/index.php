@@ -22,7 +22,7 @@
                 foreach (['todo', 'in-progress', 'done'] as $status) {
                     foreach ($tasksByStatus[$status] as $taak) {
                         $hasTasks = true;
-                        $statusClass = $status . '-header';
+                        $statusClass = ($status === 'in-progress') ? 'in-progress-header' : $status . '-header';
                         echo '<li class="sidebar-task">'
                             . '<span class="sidebar-title">' . $taak['titel'] . '</span> '
                             . '<span class="' . $statusClass . ' sidebar-status">' . $taak['status'] . '</span>'
@@ -35,18 +35,16 @@
                 ?>
             </ul>
         </nav>
-
-        <div class="main-content">
-            <div class="header">
-                <img src="../img/logo-big-v4.png" alt="logo">
-                <h1>Taak Verdeling</h1>
-
-                <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
-            </div>
+            <div class="main-content">
+        <div class="header">
+            <h1>Taak Verdeling</h1>
+            <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
+        </div>
 
             <?php if (isset($_GET['msg'])): ?>
                 <div class='msg'><?php echo htmlspecialchars($_GET['msg']); ?></div>
             <?php endif; ?>
+
 
             <div class="kanban-board">
                 <!-- TO DO Column -->
@@ -122,8 +120,11 @@
                         }
                         ?>
                     </div>
-                </div>
-            </div>
+
+
+
+           
+        </div>
         </div>
     </div>
 
