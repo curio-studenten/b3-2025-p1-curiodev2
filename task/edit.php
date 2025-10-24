@@ -77,14 +77,15 @@ if (!$task) {
 
                 <button type="submit">Taak bijwerken</button>
             </form>
-        </div>
+        
 
-        <form action="../backend/taskController.php" method="POST">
-            <input type="hidden" name="action" value="delete">
-            <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
-            <input type="submit" value="Verwijder taak"
-                onclick="return confirm('Weet je zeker dat je deze taak wilt verwijderen?');">
-        </form>
+            <form action="../backend/taskController.php" method="POST">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
+                <input type="submit" value="Verwijder taak"
+                    onclick="return confirm('Weet je zeker dat je deze taak wilt verwijderen?');">
+            </form>
+        </div>
     </div>
 </body>
 
