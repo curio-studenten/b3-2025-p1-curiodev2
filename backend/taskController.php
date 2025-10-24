@@ -39,9 +39,25 @@ $taken = getAllTasks();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
-    // Variabelen vullen en valideren
-    $errors = [];
     $action = $_POST['action'] ?? 'create';
+    
+    if ($action === 'delete') {
+        $id = $_POST['id'] ?? null;
+        
+        if (!empty($id)) {
+            $query = "DELETE FROM taken WHERE id = :id";
+            $statement = $conn->prepare($query);
+            $statement->execute([':id' => $id]);
+            
+            header('Location: ../task/index.php?msg=Taak succesvol verwijderd');
+            exit;
+        } else {
+            header('Location: ../task/index.php?error=Geen geldig ID opgegeven');
+            exit;
+        }
+    }
+    
+    $errors = [];
     
     $titel = $_POST['titel'] ?? null;
     if (empty($titel)) {
