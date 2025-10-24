@@ -38,7 +38,7 @@
         </nav>
         <div class="main-content">
             <div class="header">
-                <img src="img/logo-big-outlines-only.png" alt="logo">
+                <img src="../img/logo-big-outlines-only.png" alt="logo">
                 <h1>Taak Verdeling</h1>
                 <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
             </div>
@@ -68,60 +68,90 @@
                             }
                         }
                         ?>
-                    </div>
-                </div>
 
-                <!-- DOING Column -->
-                <div class="kanban-column">
-                    <h2 class="column-header doing-header">Doing</h2>
-                    <div class="tasks-container">
-                        <?php
-                        if (isset($taken) && count($taken) > 0) {
-                            foreach ($taken as $taak) {
-                                if ($taak['status'] == 'in-progress') {
-                                    ?>
-                                    <div class="task-card">
-                                        <h3><?php echo $taak['titel']; ?></h3>
-                                        <p><?php echo $taak['beschrijving']; ?></p>
-                                        <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
-                                        <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
-                                    </div>
-                                    <?php
+                        <!-- DOING Column -->
+                        <div class="kanban-column">
+                            <h2 class="column-header doing-header">Doing</h2>
+                            <div class="tasks-container">
+                                <?php
+                                if (isset($taken) && count($taken) > 0) {
+                                    foreach ($taken as $taak) {
+                                        if ($taak['status'] == 'in-progress') {
+                                            ?>
+                                            <div class="task-card">
+                                                <h3><?php echo $taak['titel']; ?></h3>
+                                                <p><?php echo $taak['beschrijving']; ?></p>
+                                                <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                                <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
+                                                <a href="delete.php?id=<?php echo $taak['id']; ?>">✏️ verwijderen</a>
+                                            </div>
+                                            <?php
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
+                                ?>
+                            </div>
+                        </div>
 
-                <!-- DONE Column -->
-                <div class="kanban-column">
-                    <h2 class="column-header done-header">Done</h2>
-                    <div class="tasks-container">
-                        <?php
-                        if (isset($taken) && count($taken) > 0) {
-                            foreach ($taken as $taak) {
-                                if ($taak['status'] == 'done') {
-                                    ?>
-                                    <div class="task-card">
-                                        <h3><?php echo $taak['titel']; ?></h3>
-                                        <p><?php echo $taak['beschrijving']; ?></p>
-                                        <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
-                                        <div class="links">
-                                            <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
-                                            <a href="delete.php?id=<?php echo $taak['id']; ?>">✏️ Verwijderen</a>
-                                        </div>
-                                    </div>
-                                    <?php
+                        <!-- DONE Column -->
+                        <div class="kanban-column">
+                            <h2 class="column-header done-header">Done</h2>
+                            <div class="tasks-container">
+                                <?php
+                                if (isset($taken) && count($taken) > 0) {
+                                    foreach ($taken as $taak) {
+                                        if ($taak['status'] == 'done') {
+                                            ?>
+                                            <div class="task-card">
+                                                <h3><?php echo $taak['titel']; ?></h3>
+                                                <p><?php echo $taak['beschrijving']; ?></p>
+                                                <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                                <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
+                                                <button class="delete-btn" data-id="<?php echo $taak['id']; ?>">🗑️
+                                                    Verwijderen</button>
+                                            </div>
+                                            <script>
+                                                document.addEventListener('DOMContentLoaded', () => {
+                                                    const buttons = document.querySelectorAll('.delete-btn');
+
+                                                    buttons.forEach(btn => {
+                                                        btn.addEventListener('click', () => {
+                                                            const taakId = btn.getAttribute('data-id');
+                                                            const confirmDelete = confirm("Weet je zeker dat je deze taak wilt verwijderen?");
+
+                                                            if (confirmDelete) {
+                                                                fetch(`delete.php`, {
+                                                                    method: 'POST',
+                                                                    headers: {
+                                                                        'Content-Type': 'application/x-www-form-urlencoded'
+                                                                    },
+                                                                    body: `id=${taakId}&confirm=1`
+                                                                })
+                                                                    .then(response => {
+                                                                        if (response.ok) {
+                                                                            btn.closest('.task-card').remove();
+                                                                            alert('Taak verwijderd!');
+                                                                        } else {
+                                                                            alert('Er is iets misgegaan.');
+                                                                        }
+                                                                    })
+                                                                    .catch(err => alert('Er is iets misgegaan.'));
+                                                            }
+                                                        });
+                                                    });
+                                                });
+                                            </script>
+                                            <?php
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                        ?>
+                                ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 </body>
 
