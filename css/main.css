@@ -315,7 +315,9 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
+img{
+  width:250px;
+}
 .btn-new-task {
     background-color: #007bff;
     color: white;
