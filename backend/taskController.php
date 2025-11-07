@@ -88,6 +88,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Deadline is optioneel, dus geen validatie nodig
     // Als er geen deadline is ingevuld, wordt deze NULL in de database
     $deadline = !empty($_POST['deadline']) ? $_POST['deadline'] : null;
+    
+    // Valideer of de deadline een geldige datum is (format: YYYY-MM-DD)
+    if ($deadline !== null && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $deadline)) {
+        $errors[] = "Ongeldige deadline datum. Gebruik het datumveld.";
+    }
 
     if (empty($errors)) {
         if ($action === 'create') {
