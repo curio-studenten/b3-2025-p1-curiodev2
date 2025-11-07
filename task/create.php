@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Taak aanmaken</title>
-    <?php require_once 'head.php'; ?>
+    <?php require_once '../head.php'; ?>
 </head>
 
 <body>

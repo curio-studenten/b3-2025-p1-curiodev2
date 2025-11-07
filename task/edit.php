@@ -26,7 +26,7 @@ if (!$task) {
 <head>
     <meta charset="UTF-8">
     <title>Taak aanpassen</title>
-    <?php require_once 'head.php'; ?>
+    <?php require_once '../head.php'; ?>
 </head>
 
 <body>
