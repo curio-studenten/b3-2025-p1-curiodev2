@@ -65,6 +65,12 @@ if (!$task) {
                         required><?= $task['beschrijving'] ?></textarea>
                 </div>
 
+                <!-- Deadline veld: toont de huidige deadline als deze is ingesteld -->
+                <div class="Taken">
+                    <label for="deadline">Deadline:</label>
+                    <input type="date" id="deadline" name="deadline" value="<?= $task['deadline'] ?? '' ?>">
+                </div>
+
                 <div class="Taken">
                     <label for="status">Status:</label>
                     <select id="status" name="status" required>

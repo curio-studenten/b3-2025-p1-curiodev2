@@ -13,13 +13,24 @@
                 <?php
                 $tasksByStatus = getTasksByStatus();
                 $hasTasks = false;
+                // Loop door de verschillende statusen: todo, in-progress en done
                 foreach (['todo', 'in-progress', 'done'] as $status) {
                     foreach ($tasksByStatus[$status] as $taak) {
                         $hasTasks = true;
                         $statusClass = ($status === 'in-progress') ? 'in-progress-header' : $status . '-header';
+                        
+                        // Toon de deadline als deze is ingesteld
+                        $deadlineText = '';
+                        if (!empty($taak['deadline'])) {
+                            // Format de datum naar Nederlands formaat (dd-mm-yyyy)
+                            $deadlineDate = date('d-m-Y', strtotime($taak['deadline']));
+                            $deadlineText = ' <span class="deadline">📅 ' . $deadlineDate . '</span>';
+                        }
+                        
                         echo '<li class="sidebar-task">'
                             . '<span class="sidebar-title">' . $taak['titel'] . '</span> '
                             . '<span class="' . $statusClass . ' sidebar-status">' . $taak['status'] . '</span>'
+                            . $deadlineText
                             . '</li>';
                     }
                 }
