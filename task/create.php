@@ -37,6 +37,12 @@
                     <textarea id="beschrijving" name="beschrijving" placeholder="Beschrijving" required></textarea>
                 </div>
 
+                <!-- Deadline veld: datum waarop de taak af moet zijn -->
+                <div class="Taken">
+                    <label for="deadline">Deadline:</label>
+                    <input type="date" id="deadline" name="deadline">
+                </div>
+
                 <div class="Taken">
                     <label for="status">Status:</label>
                     <select id="status" name="status" required>
