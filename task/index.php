@@ -48,6 +48,12 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
                                     <h3><?php echo $taak['titel']; ?></h3>
                                     <p><?php echo $taak['beschrijving']; ?></p>
                                     <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                    <?php 
+                                    // Toon de deadline als deze is ingesteld
+                                    if (!empty($taak['deadline'])) {
+                                        echo '<span class="deadline">📅 ' . date('d-m-Y', strtotime($taak['deadline'])) . '</span>';
+                                    }
+                                    ?>
                                     <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
 
                                 </div>
@@ -73,6 +79,12 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
                                     <h3><?php echo $taak['titel']; ?></h3>
                                     <p><?php echo $taak['beschrijving']; ?></p>
                                     <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                    <?php 
+                                    // Toon de deadline als deze is ingesteld
+                                    if (!empty($taak['deadline'])) {
+                                        echo '<span class="deadline">📅 ' . date('d-m-Y', strtotime($taak['deadline'])) . '</span>';
+                                    }
+                                    ?>
                                     <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
 
                                 </div>
@@ -99,6 +111,12 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
                                     <h3><?php echo $taak['titel']; ?></h3>
                                     <p><?php echo $taak['beschrijving']; ?></p>
                                     <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                    <?php 
+                                    // Toon de deadline als deze is ingesteld
+                                    if (!empty($taak['deadline'])) {
+                                        echo '<span class="deadline">📅 ' . date('d-m-Y', strtotime($taak['deadline'])) . '</span>';
+                                    }
+                                    ?>
                                     <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
                                 </div>
                                 <?php

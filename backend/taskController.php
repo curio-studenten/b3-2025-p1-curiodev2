@@ -5,7 +5,9 @@ require_once __DIR__ . '/conn.php';
 function getAllTasks()
 {
     global $conn;
-    $sql = "SELECT * FROM taken ORDER BY id DESC";
+    // Sorteer de taken op deadline (eerst de vroegste deadline)
+    // NULL deadlines komen als laatste
+    $sql = "SELECT * FROM taken ORDER BY deadline IS NULL, deadline ASC, id DESC";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
