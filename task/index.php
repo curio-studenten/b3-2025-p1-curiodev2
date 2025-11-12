@@ -25,7 +25,7 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
             <h1>Taak Verdeling</h1>
             <div class="links">
                 <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
-                <a href="done.php" class="btn-new-task">Taken Overzicht</a>
+                <a href="afdeling.php" class="btn-new-task">Taken Overzicht</a>
             </div>
         </div>
 
