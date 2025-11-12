@@ -24,6 +24,7 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
             <img src="../img/logo-big-v4.png" alt="logo">
             <h1>Taak Verdeling</h1>
             <div class="links">
+<<<<<<< Updated upstream
                 <a href="create.php">+ Nieuwe Taak</a>
                 <a href="afdeling.php">Taken Overzicht</a>
                 <?php if (isset($_SESSION['user_id'])): ?>
@@ -31,6 +32,10 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
                 <?php else: ?>
                     <a href="login.php">Inloggen</a>
                 <?php endif; ?>
+=======
+                <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
+                <a href="done.php" class="btn-new-task">Done Taken</a>
+>>>>>>> Stashed changes
             </div>
         </div>
 
@@ -53,6 +58,9 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
                                     <h3><?php echo $taak['titel']; ?></h3>
                                     <p><?php echo $taak['beschrijving']; ?></p>
                                     <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                    <?php if (!empty($taak['deadline'])) { $display = date('d-m', strtotime($taak['deadline'])); ?>
+                                        <span class="task-date">Deadline: <?php echo $display; ?></span>
+                                    <?php } ?>
                                     <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
 
                                 </div>
@@ -78,6 +86,9 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
                                     <h3><?php echo $taak['titel']; ?></h3>
                                     <p><?php echo $taak['beschrijving']; ?></p>
                                     <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                    <?php if (!empty($taak['deadline'])) { $display = date('d-m', strtotime($taak['deadline'])); ?>
+                                        <span class="task-date">Deadline: <?php echo $display; ?></span>
+                                    <?php } ?>
                                     <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
 
                                 </div>
@@ -104,6 +115,9 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
                                     <h3><?php echo $taak['titel']; ?></h3>
                                     <p><?php echo $taak['beschrijving']; ?></p>
                                     <span class="afdeling"><?php echo $taak['afdeling']; ?></span>
+                                    <?php if (!empty($taak['deadline'])) { $display = date('d-m', strtotime($taak['deadline'])); ?>
+                                        <span class="task-date">Deadline: <?php echo $display; ?></span>
+                                    <?php } ?>
                                     <a href="edit.php?id=<?php echo $taak['id']; ?>">✏️ Aanpassen</a>
                                 </div>
                                 <?php

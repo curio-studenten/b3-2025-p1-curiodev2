@@ -24,6 +24,17 @@ if (!$task) {
     echo "<p>Task not found.</p>";
     exit();
 }
+
+// Prepare date value for <input type="date"> (expects YYYY-MM-DD)
+$formattedDate = '';
+if (!empty($task['deadline'])) {
+    $ts = strtotime($task['deadline']);
+    if ($ts !== false) {
+        $formattedDate = date('Y-m-d', $ts);
+    }
+} else {
+    $formattedDate = date('Y-m-d');
+}
 ?>
 
 <!doctype html>
@@ -79,6 +90,11 @@ if (!$task) {
                         </option>
                         <option value="done" <?= $task['status'] === 'done' ? 'selected' : '' ?>>Done</option>
                     </select>
+                </div>
+
+                <div class="Taken">
+                    <label for="deadline">Deadline: </label>
+                    <input type="date" id="deadline" name="deadline" value="<?= $formattedDate ?>">
                 </div>
 
                 <button type="submit">Taak bijwerken</button>
