@@ -35,6 +35,9 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
 =======
                 <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
                 <a href="done.php" class="btn-new-task">Done Taken</a>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             </div>
         </div>
