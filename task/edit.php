@@ -1,6 +1,12 @@
 <?php
+require_once __DIR__ . '/../backend/config.php';
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    $msg = "Je moet eerst inloggen!";
+    header("Location: login.php?msg=$msg");
+    exit;
+}
 require_once __DIR__ . '/../backend/taskController.php';
-
 // Fetch task data if ID is provided
 $task = null;
 if (isset($_GET['id'])) {

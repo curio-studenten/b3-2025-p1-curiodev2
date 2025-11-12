@@ -1,14 +1,10 @@
 <?php
 session_start();
-session_destroy();
-session_start();
 require_once __DIR__ . '/../backend/config.php';
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit;
 }
-
-// Haal eventuele error message op
 $msg = isset($_GET['msg']) ? htmlspecialchars($_GET['msg']) : '';
 ?>
 <!doctype html>

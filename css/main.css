@@ -324,7 +324,7 @@ img{
     align-items: center;
 }
 
-.btn-new-task {
+.links a{
     background-color: #007bff;
     color: white;
     padding: 10px 20px;

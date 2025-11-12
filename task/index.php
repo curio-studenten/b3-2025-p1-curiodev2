@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (isset($_GET['msg']) || isset($_GET['error'])) {
     header("Refresh: 3; url=" . strtok($_SERVER["REQUEST_URI"], '?'));
 }
@@ -24,8 +24,13 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
             <img src="../img/logo-big-v4.png" alt="logo">
             <h1>Taak Verdeling</h1>
             <div class="links">
-                <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
-                <a href="done.php" class="btn-new-task">Taken Overzicht</a>
+                <a href="create.php">+ Nieuwe Taak</a>
+                <a href="done.php">Taken Overzicht</a>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="logout.php">Uitloggen</a>
+                <?php else: ?>
+                    <a href="login.php">Inloggen</a>
+                <?php endif; ?>
             </div>
         </div>
 
