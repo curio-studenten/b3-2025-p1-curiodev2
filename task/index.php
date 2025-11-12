@@ -26,19 +26,17 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
             <div class="links">
 <<<<<<< Updated upstream
                 <a href="create.php">+ Nieuwe Taak</a>
-                <a href="afdeling.php">Taken Overzicht</a>
+                <a href="afdeling.php">Done Taken</a>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a href="logout.php">Uitloggen</a>
                 <?php else: ?>
                     <a href="login.php">Inloggen</a>
                 <?php endif; ?>
-=======
                 <a href="create.php" class="btn-new-task">+ Nieuwe Taak</a>
                 <a href="done.php" class="btn-new-task">Done Taken</a>
 <<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
->>>>>>> Stashed changes
             </div>
         </div>
 
