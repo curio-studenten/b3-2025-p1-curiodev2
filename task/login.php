@@ -22,8 +22,8 @@ $msg = isset($_GET['msg']) ? htmlspecialchars($_GET['msg']) : '';
             echo "<div class='msg'>" . $_GET['msg'] . "</div>";
         }
         ?>
-
-        <form action="../backend/loginController.php" method="POST">
+        <form action="../backend/loginController.php" method="POST" class="login-form">
+            <h1>Inloggen</h1>
             <div class="form-group">
                 <label for="username">Gebruikersnaam:</label>
                 <input type="text" name="username" id="username" required>
@@ -32,7 +32,7 @@ $msg = isset($_GET['msg']) ? htmlspecialchars($_GET['msg']) : '';
                 <label for="password">Wachtwoord:</label>
                 <input type="password" name="password" id="password" required>
             </div>
-            <input type="submit" value="Login">
+            <input type="submit" value="login">
         </form>
     </div>
 
