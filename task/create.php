@@ -54,7 +54,10 @@ if (!isset($_SESSION['user_id'])) {
                         <option value="done">Done</option>
                     </select>
                 </div>
-
+                <div class="Taken">
+                    <label for="deadline">Deadline: </label>
+                    <input type="date" id="deadline" name="deadline" value="<?php echo date('Y-m-d'); ?>">
+                </div>
 
                 <button type="submit">Taak toevoegen</button>
             </form>

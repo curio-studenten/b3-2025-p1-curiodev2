@@ -9,33 +9,38 @@ if (!isset($_SESSION['user_id'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php require_once '../head.php'; ?>
     <title>TaakVerdeling</title>
 </head>
 <body>
-    <div class="main-flex">
-        <nav class="sidebar">
-            <h2>Taak Overzicht</h2>
-            <ul class="sidebar-list">
-                <?php
-                $tasksByStatus = getTasksByStatus();
-                $hasTasks = false;
-                foreach (['todo', 'in-progress', 'done'] as $status) {
-                    foreach ($tasksByStatus[$status] as $taak) {
-                        $hasTasks = true;
-                        $statusClass = ($status === 'in-progress') ? 'in-progress-header' : $status . '-header';
-                        echo '<li class="sidebar-task">'
-                            . '<span class="sidebar-title">' . $taak['titel'] . '</span> '
-                            . '<span class="' . $statusClass . ' sidebar-status">' . $taak['status'] . '</span>'
-                            . '</li>';
-                    }
-                }
-                if (!$hasTasks) {
-                    echo '<li>Geen taken gevonden.</li>';
-                }
-                ?>
-            </ul>
-        </nav>
+    <?php require_once __DIR__ . '/../backend/taskController.php';
+    $tasksByStatus = getTasksByStatus();
+    $doneTasks = $tasksByStatus['done'];
+    ?>
+
+    <div class="kanban-column">
+            <h2 class="column-header done-header">Done</h2>
+                    <div class="tasks-container tasks-grid">
+                        <?php
+                        foreach ($doneTasks as $taak): ?>
+                            <div class="task-card">
+                                <span class="task-title"><?= $taak['titel']; ?></span>
+                                <span class="task-desc"><?= $taak['beschrijving']; ?></span>
+                                <span class="afdeling"><?= $taak['afdeling']; ?></span>
+                                <?php if (!empty($taak['deadline'])) { $display = date('d-m', strtotime($taak['deadline'])); ?>
+                                    <span class="task-date">Deadline: <?= $display; ?></span>
+                                <?php } ?>
+                                <span class="task-checkmark"></span>
+                                <a href="edit.php?id=<?= $taak['id']; ?>">✏️ Aanpassen</a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+
+
+
+            </div>
+
+
 </body>
 </html>
