@@ -326,7 +326,7 @@ img {
   align-items: center;
 }
 
-.links a {
+.links a, .links2 a{
   background-color: #007bff;
   color: white;
   padding: 10px 20px;
@@ -454,44 +454,6 @@ input[type="submit"]:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-
-
-/* Sidebar */
-.main-flex {
-  display: flex;
-}
-
-.sidebar {
-  width: 220px;
-  background: #f4f4f4;
-  padding: 20px 10px;
-  min-height: 100vh;
-}
-
-.sidebar-list {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar-task {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.sidebar-title {
-  font-weight: bold;
-}
-
-.sidebar-status {
-  padding: 2px 8px;
-  border-radius: 8px;
-  font-size: 0.9em;
-}
-
-
-
 /* DONE PAGE STYLE*/
 
 
@@ -552,6 +514,7 @@ input[type="submit"]:hover {
 h1 {
     margin-top: 0;
     font-size: 32px;
+    padding-right: 160px;
 }
 
 /* Afdelingen navigatie blok */
@@ -660,4 +623,11 @@ body h2 + ul li a {
 
 body h2 + ul li a:hover {
     background: #0056b3;
+}
+
+.links2{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-evenly;
 }

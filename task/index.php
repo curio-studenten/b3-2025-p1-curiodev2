@@ -24,15 +24,20 @@ if (isset($_GET['msg']) || isset($_GET['error'])) {
             <img src="../img/logo-big-v4.png" alt="logo">
             <h1>Taak Verdeling</h1>
             <div class="links">
-                <a href="my.php">Mijn Taken</a> <!-- NIEUW -->
-                <a href="create.php">+ Nieuwe Taak</a>
-                <a href="afdeling.php">Done Taken</a>
+
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a href="logout.php">Uitloggen</a>
                 <?php else: ?>
                     <a href="login.php">Inloggen</a>
                 <?php endif; ?>
             </div>
+
+        </div>
+        <div class="links2">
+            <a href="create.php">+ Nieuwe Taak</a>
+            <a href="done.php">Done Taken</a>
+            <a href="my.php">Mijn Taken</a>
+            <a href="afdeling.php">Afdelingen</a>
         </div>
 
         <?php if (isset($_GET['msg'])): ?>
