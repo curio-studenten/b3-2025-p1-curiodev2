@@ -1,5 +1,7 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/conn.php';
 
 function normalizeDateForDb($input)
@@ -110,14 +112,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
         if ($action === 'create') {
-            $query = "INSERT INTO taken (titel, beschrijving, afdeling, status, deadline)
-                  VALUES (:titel, :beschrijving, :afdeling, :status, :deadline)";
+            $user_id = $_SESSION['user_id'] ?? null;
+            $query = "INSERT INTO taken (titel, beschrijving, afdeling, status, deadline, user)
+                  VALUES (:titel, :beschrijving, :afdeling, :status, :deadline, :user)";
             $params = [
                 ":titel" => $titel,
                 ":beschrijving" => $beschrijving,
                 ":afdeling" => $afdeling,
                 ":status" => $status,
-                ":deadline" => $datum_db
+                ":deadline" => $datum_db,
+                ":user" => $user_id
             ];
         } elseif ($action === 'update') {
             $id = $_POST['id'] ?? null;
